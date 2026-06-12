@@ -1,10 +1,18 @@
+import asyncio
 import os
+from telegram import Bot
 
-token = os.getenv("BOT_TOKEN")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHANNEL_USERNAME = "@GoodnewsdailySriLanka"
 
-print("TOKEN EXISTS:", token is not None)
+async def main():
+    bot = Bot(token=BOT_TOKEN)
 
-if token:
-    print("TOKEN LENGTH:", len(token))
-else:
-    print("TOKEN NOT FOUND")
+    await bot.send_message(
+        chat_id=CHANNEL_USERNAME,
+        text="🙏 Test message from Good News Daily Bot\n\nRailway + GitHub + Telegram are connected successfully."
+    )
+
+    print("Message sent successfully!")
+
+asyncio.run(main())
